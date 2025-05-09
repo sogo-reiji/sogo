@@ -44,13 +44,13 @@ public class Qes1_13 {
 		// 長整数型
 		long long2 = 0;
 		// 単精度浮動小数点数型
-		float float2 = 0;
+		float float2 = 0.0f;
 		// 倍精度浮動小数点数型
-		double double2 = 0;
+		double double2 = 0.0;
 		// 文字型
-		char char2 = '0';
+		char char2 = 'A';
 		// 文字列型
-		String string2 = "0";
+		String string2 = "ありがとう";
 		// ブーリアン型
 		boolean boolean2 = false;
 		
