@@ -48,9 +48,9 @@ public class Qes1_13 {
 		// 倍精度浮動小数点数型
 		double double2 = 0.0;
 		// 文字型
-		char char2 = 'A';
+		char char2 = '\u0000';
 		// 文字列型
-		String string2 = "ありがとう";
+		String string2 = "null";
 		// ブーリアン型
 		boolean boolean2 = false;
 		
