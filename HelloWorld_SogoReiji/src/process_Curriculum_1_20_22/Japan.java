@@ -31,7 +31,7 @@ public class Japan {
 	// 現在日時の変数を宣言
 	String dateTime;
 	
-	public void PrintJapan(){
+	public void printJapan(){
 	
 		// 変数greetingにあいさつ文を代入
 		this.greeting = "こんにちは！ここは日本です";

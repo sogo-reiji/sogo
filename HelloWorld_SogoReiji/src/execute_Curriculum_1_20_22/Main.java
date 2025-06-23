@@ -27,7 +27,7 @@ public class Main {
 		// Japanクラスのインスタンス生成
 		Japan japan = new Japan();
 		// PrintJapanメソッドの呼び出し
-		japan.PrintJapan();
+		japan.printJapan();
 		
 	}
 
