@@ -42,7 +42,7 @@ public class Main{
 			// 名前のコンソール入力
 			name = scanner.nextLine();
 			// 入力値が正常の場合、ループを抜ける
-			if(name != null){
+			if(name != null && !name.trim().isEmpty()){
 				break;
 			// 入力値がnullの場合、もう一度コンソール入力
 			} else{
