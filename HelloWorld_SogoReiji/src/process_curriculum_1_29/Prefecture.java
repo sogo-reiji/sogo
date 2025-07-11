@@ -51,16 +51,6 @@ public class Prefecture {
 		this.area = area;
 	}
 	
-	// getterメソッドで都道府県名の値を呼び出し元に返す
-	public String getName() {
-		return this.name;
-	}
-	
-	// getterメソッドで県庁所在地の値を呼び出し元に返す
-	public String getCapital() {
-		return this.capital;
-	}
-	
 	// getterメソッドで面積の値を呼び出し元に返す
 	public double getArea() {
 		return this.area;

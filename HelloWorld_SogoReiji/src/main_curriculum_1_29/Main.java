@@ -64,27 +64,89 @@ public class Main {
 		
 		// Scannerクラスのインスタンス生成
 		Scanner sc = new Scanner(System.in);
+        
+		// 空文字を除外したリストを作成
+		List<String> cleanedInput = new ArrayList<>();
+		// While文で有効な入力があるまでループ
+		while (true) {
+			// "都道府県番号を入力してください（カンマ区切り）"と出力
+			System.out.println("都道府県番号を入力してください（0～10、カンマ区切り）");
+			// 入力された番号をsplitメソッドで分割し、配列に格納
+			String[] inputNum = sc.nextLine().split(",");
+			
+			// 前回のコンソール入力値を削除
+			cleanedInput.clear();
+			
+			// for文で入力値が格納された配列を回す
+			for (String s : inputNum) {
+				// 入力値が空文字じゃないかチェック
+				if (s.trim().length() > 0) {
+					// 空文字じゃない場合リストに値を追加
+					cleanedInput.add(s.trim());
+				}
+			}
+			
+			// 空文字除外後の要素が1件以上ある場合ループを抜ける
+			if (!cleanedInput.isEmpty()) {
+                break;
+			}
+			
+			// エラー文をコンソール出力
+			System.out.println("番号が未入力です。もう一度入力してください。");
+			System.out.println();
+		}	
 		
-		// "番号を入力してください"と出力
-		System.out.println("番号を入力してください");
-		// 入力された番号をsplitメソッドで分割し、配列に格納
-		String[] inputNum = sc.nextLine().split(",");
-		
-		// "昇順なら1、降順なら2を入力してください"と出力
-		System.out.println("昇順なら1、降順なら2を入力してください");
-		// 入力された番号をsort変数に代入
-		int sort =sc.nextInt();
-		System.out.println();
+		// 並び順の変数sortを宣言
+		int sort;
+		while (true) {
+			// "昇順なら1、降順なら2を入力してください"と出力
+			System.out.println("昇順なら1、降順なら2を入力してください");
+			// 入力された値を変数に代入
+			String sortInput =sc.next();
+			System.out.println();
+			
+			try {
+				// 入力された値をint型に型変換して変数sortに代入
+				sort = Integer.parseInt(sortInput);
+				// 入力値が有効ならループを抜ける
+				if (sort == 1 || sort == 2) {
+					break;
+				// 1か2以外が入力された場合エラー文をコンソール出力
+				} else {
+					System.out.println("無効な入力です: " + sort);
+					System.out.println("1または2を入力してください。");
+				}
+			// 数値以外の文字列が入力された場合エラー文をコンソール出力
+			} catch (NumberFormatException e) {
+				System.out.println("番号以外の無効な入力です: " + sortInput);
+				System.out.println("1または2を入力してください。");
+			}
+		}
 		
 		// Prefecture型のリストを生成
 		List<Prefecture> selectPref = new ArrayList<>();
 		
 		// 拡張for文でinputNum配列を回す
-		for(String indexNum : inputNum) {
-			// 入力された番号をString型からint型に型変換
-			int index = Integer.parseInt(indexNum);
-			// 番号に該当する都道府県データをselectPrefリストに追加
-			selectPref.add(prefectures[index]);
+		for(String indexNum : cleanedInput) {
+			try {
+				// 入力された番号をString型からint型に型変換
+				int index = Integer.parseInt(indexNum.trim());
+				// indexの番号が都道府県配列の有効な範囲内にある場合の処理
+				if (index >= 0 && index < prefectures.length) {
+					// 番号に該当する都道府県データをselectPrefリストに追加
+					selectPref.add(prefectures[index]);
+				// indexの番号が都道府県配列の範囲外にある場合の処理
+				} else {
+					// エラー文をコンソール出力
+					System.out.println("入力された都道府県番号は無効な値です: " + index);
+					System.out.println();
+				}
+			// 数値以外の文字列が入力された場合の処理
+			} catch(NumberFormatException e) {
+				// エラー文をコンソール出力
+				System.out.println("番号以外の無効な入力です: " + indexNum);
+				System.out.println();
+			}
 		}
 		
 		// Comparatorを使用してselectPrefリストの並び順を面積の昇順に定義
