@@ -45,7 +45,7 @@ class Person {
 		// double型をBigDecimal型に変換
 		BigDecimal bdBmi = new BigDecimal(bmi);
 		// 小数第2位を四捨五入
-		bdBmi = bdBmi.setScale(1, RoundingMode.HALF_UP);
+		bdBmi = bdBmi.setScale(0, RoundingMode.DOWN);
 		// BigDecimal型をdouble型に変換し値を返す
 		return bdBmi.doubleValue();
 	}
@@ -63,7 +63,8 @@ class Person {
 		 問題9：thisを用いて各情報をコンソール出力
 		------------------------------------------*/
 		System.out.println("名前は" + this.name + "です"); // 名前
-		System.out.println("年は" + this.age + "です"); // 年齢
+		System.out.println("年は" + this.age + "才です"); // 年齢
 		System.out.println("BMIは" + this.bmi() + "です"); // BMI
+		System.out.println();
 	}
 }
