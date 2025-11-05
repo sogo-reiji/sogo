@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 未使用 -->
+<mapper namespace="sample.common.dao.mapper.LoginMapper">
+
+	<resultMap id="LoginResultMap"
+		type="sample.common.dao.entity.Login">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="createdAt" column="created_at" />
+		<result property="updatedAt" column="updated_at" />
+	</resultMap>
+
+	<!-- ユーザ登録 -->
+	<insert id="insertLogin"
+		parameterType="sample.common.dao.entity.Login">
+		INSERT INTO login(username, password, created_at,
+		updated_at)
+		VALUES (#{username}, #{password}, #{createdAt},
+		#{updatedAt})
+	</insert>
+
+	<!-- ユーザ名＋パスワードで1件取得 -->
+	<select id="selectByUsernameAndPassword"
+		resultMap="LoginResultMap">
+		SELECT
+		id,
+		username,
+		password,
+		created_at ,
+		updated_at
+		FROM login
+		WHERE username = #{username}
+		AND password = #{password}
+	</select>
+</mapper>
